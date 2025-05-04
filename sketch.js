@@ -8,18 +8,25 @@ function setup() {
 
 function draw() {
   background(220);
+  noStroke();
   const s = 100;
 
-  rect(0, 0, s, s);
-  rect(0, height - s, s, s);
-  rect(width - s, 0, s, s);
-  rect(width - s, height - s, s, s);
+  for (let i = 0; i < 100; i++) {
+    const x = random(0, width);
+    const y = random(0, height);
+    if (i % 2 === 0) {
+      fill(0);
+    } else {
+      fill(255);
+    }
+    rect(x, y, s, s);
+  }
 }
 
 //
 
 function addDownloadButton() {
   createButton("Download SVG").mousePressed(() => {
-    save();
+    save("sketch.svg");
   });
 }
