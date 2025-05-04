@@ -1,7 +1,9 @@
+/// <reference path="./p5/svg.d.ts" />
+
 function setup() {
   createCanvas(400, 400, "svg");
   noLoop();
-  addButton();
+  addDownloadButton();
 }
 
 function draw() {
@@ -16,7 +18,7 @@ function draw() {
 
 //
 
-function addButton() {
+function addDownloadButton() {
   createButton("Download SVG").mousePressed(() => {
     save();
   });

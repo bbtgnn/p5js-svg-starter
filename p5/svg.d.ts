@@ -1,3 +1,3 @@
-declare global {
-  const SVG: "svg";
-}
+declare const SVG: "svg";
+
+declare function loadSVG(path: string);
