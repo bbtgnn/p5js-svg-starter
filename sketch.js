@@ -1,3 +1,10 @@
+const testo = "WTF";
+const fontSize = 120;
+const parti = 40;
+const sfasamento = 4;
+
+//
+
 /** @type {Font} */
 let font;
 
@@ -19,42 +26,27 @@ function setup() {
 
 function draw() {
   clear(); // Non cancellare!
-  // background(220);
-
-  noStroke();
-  fill(0);
-
-  // Center the text
-  const t = "WTF";
-  const fontSize = 120;
 
   textFont(font);
   textLeading(fontSize);
   textSize(fontSize);
-  // textSVG(t, 0, fontSize);
 
-  const text_width = textWidth(t);
-  let parti = 40;
+  const text_width = textWidth(testo);
   let h_parti = fontSize / parti;
-  const angle_offset = 4;
-  const offset = 1;
+
+  noStroke();
+  fill(0);
+
   for (let i = 0; i < parti; i++) {
     push();
     translate(text_width / 2, 0);
-    translate(random(-offset, offset), 0);
-    rotate(random(-angle_offset, angle_offset));
+    translate(random(-sfasamento, sfasamento), 0);
 
     beginClip();
-    // stroke("red");
-    // strokeWeight(4);
-    // noFill();
-    // stroke(0);
-    // strokeWeight(1);
-    // rectMode(CENTER);
     rect(0, i * h_parti + h_parti / 2, text_width, h_parti);
     endClip();
 
-    textSVG(t, -text_width / 2, fontSize);
+    textSVG(testo, -text_width / 2, fontSize);
 
     pop();
   }
