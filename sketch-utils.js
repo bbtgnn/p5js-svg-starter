@@ -11,9 +11,14 @@
  * @param {Graphics} [graphics] Optional graphics context to draw on
  */
 function textSVG(font, text, x, y, size, graphics) {
-  const paths = font.font.getPaths(text, x, y, size);
-  paths.forEach(({ commands }) => {
-    drawPathCommands(commands, graphics);
+  const ctx = graphics || window;
+  const lineHeight = ctx.textLeading();
+
+  text.split("\n").forEach((line, index) => {
+    const paths = font.font.getPaths(line, x, y + index * lineHeight, size);
+    paths.forEach(({ commands }) => {
+      drawPathCommands(commands, graphics);
+    });
   });
 }
 
