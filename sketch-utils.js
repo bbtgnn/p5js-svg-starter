@@ -3,15 +3,22 @@
 /** @typedef {import("./p5/types").Image} Image */
 
 /**
- * @param {Font} font
  * @param {string} text
  * @param {number} x
  * @param {number} y
- * @param {number} size
  * @param {Graphics} [graphics] Optional graphics context to draw on
  */
-function textSVG(font, text, x, y, size, graphics) {
+function textSVG(text, x, y, graphics) {
+  /** @type {Font | string | object} */
+  let font = textFont();
+
+  if (typeof font === "string") {
+    throw new Error("A custom font must be loaded to use textSVG");
+  }
+
   const ctx = graphics || window;
+
+  const size = ctx.textSize();
   const lineHeight = ctx.textLeading();
 
   text.split("\n").forEach((line, index) => {

@@ -24,20 +24,16 @@ function draw() {
   fill(0);
 
   // Center the text
-  const t = "ciao\nosd";
-  const fontSize = 72;
-  const textW = textWidth(t);
-  const x = (width - textW) / 2;
-  const y = height / 2;
+  const t = "AOO";
+  const fontSize = 60;
 
-  textSVG(font, t, x, y, fontSize);
-
-  graphics.fill("black");
-  graphics.noStroke();
-  textSize(fontSize);
+  textLeading(fontSize);
   textFont(font);
-  const w = textWidth(t);
-  rect(x, y, w, fontSize);
-  textSVG(font, t, 100, 100, fontSize, graphics);
-  image(graphics, 0, 0);
+  textSize(fontSize);
+  const text_width = textWidth(t);
+
+  const text_x = (width - text_width) / 2;
+  const text_y = (height + fontSize) / 2;
+
+  textSVG(t, text_x, text_y);
 }
