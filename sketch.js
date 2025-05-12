@@ -32,7 +32,7 @@ function draw() {
   textSize(fontSize);
 
   const text_width = textWidth(testo);
-  let h_parti = fontSize / parti;
+  const h_parti = fontSize / parti;
 
   noStroke();
   fill(0);
