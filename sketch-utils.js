@@ -9,14 +9,13 @@
  * @param {Graphics} [graphics] Optional graphics context to draw on
  */
 function textSVG(text, x, y, graphics) {
-  /** @type {Font | string | object} */
-  let font = textFont();
+  const ctx = graphics || window;
 
+  /** @type {Font | string | object} */
+  let font = ctx.textFont();
   if (typeof font === "string") {
     throw new Error("A custom font must be loaded to use textSVG");
   }
-
-  const ctx = graphics || window;
 
   const size = ctx.textSize();
   const lineHeight = ctx.textLeading();
