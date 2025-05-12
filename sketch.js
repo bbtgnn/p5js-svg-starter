@@ -1,5 +1,16 @@
+/** @type {Font} */
+let font;
+
+/** @type {Graphics} */
+let graphics;
+
+function preload() {
+  font = loadFont("./fonts/Adobe-Jenson-Pro-Bold-Caption.ttf");
+}
+
 function setup() {
   createCanvas(400, 400, "svg");
+  graphics = createGraphics(200, 200, "svg");
   noLoop();
   addDownloadButton();
 }
@@ -7,18 +18,19 @@ function setup() {
 function draw() {
   background(220);
   noStroke();
-  const s = 100;
+  fill(0);
 
-  for (let i = 0; i < 100; i++) {
-    const x = random(0, width);
-    const y = random(0, height);
-    if (i % 2 === 0) {
-      fill(0);
-    } else {
-      fill(255);
-    }
-    rect(x, y, s, s);
-  }
+  // Center the text
+  const t = "ciao";
+  const fontSize = 72;
+  const textW = textWidth(t);
+  const x = (width - textW) / 2;
+  const y = height / 2;
+
+  textSVG(font, t, x, y, fontSize);
+
+  textSVG(font, t, 100, 100, fontSize, graphics);
+  image(graphics, 0, 0);
 }
 
 //
