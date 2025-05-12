@@ -80,3 +80,11 @@ function drawPathCommands(commands, graphics) {
   // Close the main shape
   ctx.endShape(CLOSE);
 }
+
+//
+
+function addDownloadButton() {
+  createButton("Download SVG").mousePressed(() => {
+    save("sketch.svg");
+  });
+}

@@ -11,17 +11,20 @@ function preload() {
 function setup() {
   createCanvas(400, 400, "svg");
   graphics = createGraphics(200, 200, "svg");
-  noLoop();
   addDownloadButton();
+
+  noLoop(); // Opzionale
 }
 
 function draw() {
+  clear(); // Non cancellare!
   background(220);
+
   noStroke();
   fill(0);
 
   // Center the text
-  const t = "ciao";
+  const t = "ciao\nosd";
   const fontSize = 72;
   const textW = textWidth(t);
   const x = (width - textW) / 2;
@@ -29,14 +32,12 @@ function draw() {
 
   textSVG(font, t, x, y, fontSize);
 
+  graphics.fill("black");
+  graphics.noStroke();
+  textSize(fontSize);
+  textFont(font);
+  const w = textWidth(t);
+  rect(x, y, w, fontSize);
   textSVG(font, t, 100, 100, fontSize, graphics);
   image(graphics, 0, 0);
-}
-
-//
-
-function addDownloadButton() {
-  createButton("Download SVG").mousePressed(() => {
-    save("sketch.svg");
-  });
 }
