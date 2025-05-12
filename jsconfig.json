@@ -1,10 +1,6 @@
 {
-  "include": [
-    "*.js",
-    "**/*.js",
-    "./p5/global.d.ts",
-    "./p5/lib/addons/p5.sound.d.ts"
-  ],
+  "include": ["*.js", "**/*.js", "./p5/types/global.d.ts"],
+  "exclude": ["./p5/code/p5.js", "./p5/code/p5js-svg.js"],
   "compilerOptions": {
     "checkJs": true
   }

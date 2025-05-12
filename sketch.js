@@ -1,5 +1,3 @@
-/// <reference path="./p5/svg.d.ts" />
-
 function setup() {
   createCanvas(400, 400, "svg");
   noLoop();
