@@ -8,19 +8,17 @@ const sfasamento = 4;
 /** @type {Font} */
 let font;
 
-/** @type {Graphics} */
-let graphics;
-
 function preload() {
   font = loadFont("./fonts/Adobe-Jenson-Pro-Bold-Caption.ttf");
 }
 
 function setup() {
   createCanvas(400, 400, "svg");
-  graphics = createGraphics(200, 200, "svg");
   addDownloadButton();
+
   rectMode(CENTER);
   angleMode(DEGREES);
+
   noLoop(); // Opzionale
 }
 
