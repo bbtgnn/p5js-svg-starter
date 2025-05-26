@@ -1,7 +1,9 @@
+import { Font as P5Font, Graphics as P5Graphics, Image as P5Image } from ".";
+
 declare global {
-  type Font = import("./p5/types").Font;
-  type Graphics = import("./p5/types").Graphics;
-  type Image = import("./p5/types").Image;
+  type Font = P5Font;
+  type Graphics = P5Graphics;
+  type Image = P5Image;
 }
 
 export {};
