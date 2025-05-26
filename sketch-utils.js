@@ -1,6 +1,97 @@
-/** @typedef {import("./p5/types").Font} Font */
-/** @typedef {import("./p5/types").Graphics} Graphics */
-/** @typedef {import("./p5/types").Image} Image */
+/**
+ * @param {SVGImage} svg
+ */
+function hideSVG(svg) {
+  svg.elt.style.display = "none";
+}
+
+/**
+ * @param {SVGImage} svg
+ */
+function showSVG(svg) {
+  svg.elt.style.display = "block";
+}
+
+/**
+ * @param {SVGImage} svg
+ * @returns {Array<SVGImage>}
+ */
+function getSVGPaths(svg) {
+  return svg.query("path, circle, rect, ellipse, polygon, polyline, text");
+}
+
+/**
+ * @param {SVGImage} svg
+ * @param {string} color
+ */
+function fillSVG(svg, color) {
+  // Set fill on the main element
+  svg.attribute("fill", color);
+
+  getSVGPaths(svg).forEach((el) => {
+    el.attribute("fill", color);
+  });
+}
+
+/**
+ * @param {SVGImage} svg
+ * @param {string} color
+ */
+function strokeSVG(svg, color) {
+  svg.attribute("stroke", color);
+
+  getSVGPaths(svg).forEach((el) => {
+    el.attribute("stroke", color);
+  });
+}
+
+/**
+ * @param {SVGImage} svg
+ * @param {number} weight
+ */
+function strokeWeightSVG(svg, weight) {
+  svg.attribute("stroke-width", weight);
+
+  getSVGPaths(svg).forEach((el) => {
+    el.attribute("stroke-width", weight);
+  });
+}
+
+/**
+ * @param {SVGImage} svg
+ */
+function noFillSVG(svg) {
+  svg.attribute("fill", "none");
+
+  getSVGPaths(svg).forEach((el) => {
+    el.attribute("fill", "none");
+  });
+}
+
+/**
+ * @param {SVGImage} svg
+ */
+function noStrokeSVG(svg) {
+  svg.attribute("stroke", "none");
+
+  getSVGPaths(svg).forEach((el) => {
+    el.attribute("stroke", "none");
+  });
+}
+
+/**
+ * @param {SVGImage} svg
+ */
+function resetSVG(svg) {
+  svg.attribute("fill", "black");
+  svg.attribute("stroke", "none");
+  svg.attribute("stroke-width", 1);
+  svg.elt.style.display = "block";
+
+  getSVGPaths(svg).forEach((el) => {
+    resetSVG(el);
+  });
+}
 
 /**
  * @param {string} text
