@@ -1,4 +1,18 @@
 /**
+ * @param {string} path
+ * @returns {SVGImage}
+ */
+function loadSVGImage(path) {
+  const svg = loadSVG(path, (e) => {
+    const width = e.elt.width.baseVal.value;
+    const height = e.elt.height.baseVal.value;
+    svg.width = width;
+    svg.height = height;
+  });
+  return svg;
+}
+
+/**
  * @param {SVGImage} svg
  */
 function hideSVG(svg) {

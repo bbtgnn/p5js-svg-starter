@@ -12,7 +12,7 @@ declare global {
     query(selector: string): SVGImage[];
   };
 
-  function loadSVG(path: string): SVGImage;
+  function loadSVG(path: string, callback?: (svg: SVGImage) => void): SVGImage;
   function querySVG(selector: string): SVGImage[];
 
   function image(
